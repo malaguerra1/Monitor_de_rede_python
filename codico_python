@@ -1,0 +1,46 @@
+import socket
+import speedtest
+
+# CRIAR DEF PARA DESCOBRIR IP
+
+def descobrir_ip():
+    ip_local = socket.gethostbyname(socket.gethostname())
+    print(f"\n Seu ip é: {ip_local}")
+    input("Pressione Enter para continuar ")
+
+#CRIAR DEF PARA TESTAR VELOCIDADE
+
+def testar_velocidade():
+    print("\n A testar a velocidade da internet.... ")
+    st = speedtest.Speedtest()
+    velocidade_download = st.download() / 1_000_000
+    velocidade_upload = st.upload() / 1_000_000
+    print(f"Download: {velocidade_download: .2f} Mbps")
+    print(f"Upload: {velocidade_upload: .2f} Mbps ")
+    input("Pressione Enter para continuar ")
+
+#CRIAR DEF MENU
+
+def menu():
+    while True:
+        print("\n==========================")
+        print("🌐 Monitor de Rede")
+        print("==========================")
+        print("1️⃣ Descobrir IP Local")
+        print("2️⃣ Testar Velocidade da Internet")
+        print("3️⃣ Sair")
+        print("==========================")
+
+        opcao = input("Escolha uma opção: ")
+
+        if opcao == "1":
+            descobrir_ip()
+        elif opcao == "2":
+            testar_velocidade()
+        elif opcao == "3":
+            print("\n👋 Saindo... Até mais!")
+            break
+        else:
+            print("\n⚠ Opção inválida! Tente novamente.")
+
+menu()
